@@ -39,7 +39,11 @@ module Hackpad
           last_result.user_options['target_secret'] = ask 'Please entry the secret that you want to migrate (example: XsDYswLE1QogALkdFgsfvhRW4YJUvGre): '
           last_result.write!
         end
-        Hackpad::Migration::Migrator.new(last_result).migrate
+        begin
+          Hackpad::Migration::Migrator.new(last_result).migrate
+        rescue Errno::ECONNREFUSED => e
+          puts e
+        end
       end
     end
   end

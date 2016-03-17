@@ -2,6 +2,17 @@
 
 A tool for migrate Hackpad from one Hackpad site to other Hackpad site via Hackpad's APIs.
 
+## WARNING
+
+This tool can't make sure all the data can be migrated perfectly, It just use Hackpad API to do this migration, the data that extract from Hackpad is not the origin data from DB, so some data will be lose, please make sure you understand before you use it.
+
+Here is the data that will lose as I know
+
+- Pad modified info from users.
+- Checkbox in the pad (fixed by change css name in this migration tool)
+- Header 1 in the pad
+- All link tag in the pad
+
 ## Installation
 
     $ gem install hackpad-migration

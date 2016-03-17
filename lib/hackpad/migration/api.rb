@@ -33,6 +33,7 @@ module Hackpad
       def fix_data_missing(body)
         body.gsub!('class="taskdone"', 'class="listtype-taskdone listindent2 list-taskdone2"')
         body.gsub!('class="task"', 'class="listtype-task listindent2 list-task2"')
+        body.gsub!(/<h2>(.*?)<\/h2>/, '<ul class="listtype-hone listindent1 list-hone1"><li><span>\1</span></li></ul>')
       end
     end
   end

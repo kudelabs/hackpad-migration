@@ -10,8 +10,9 @@ Here is the data that will lose as I know
 
 - Pad modified info from users.
 - Checkbox in the pad (fixed by change css name in this migration tool)
-- Header 1 in the pad
+- Header 1 in the pad (fixed by change ellement h2 to hackpad style)
 - All link tag in the pad
+- All comments from users in the pad
 
 ## Installation
 

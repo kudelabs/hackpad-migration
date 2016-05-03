@@ -20,7 +20,7 @@ module Hackpad
           target_pid = result.source_and_target_map[source_pid]
           if target_pid.nil?
             pad = target.create(body)
-            exit_if_error(pad, 'Got error when creating pad for target site')
+            # exit_if_error(pad, 'Got error when creating pad for target site')
             # pad {"padId"=>"RAtutOXxMGF1", "globalPadId"=>"2$RAtutOXxMGF1"}
             result.add_source_and_target(source_pid, pad['padId'])
             puts "created pad #{pad['padId']} from source pad #{source_pid}"

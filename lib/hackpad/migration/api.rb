@@ -14,7 +14,13 @@ module Hackpad
         body = client.request(:get, "/api/1.0/pad/#{id}/content/latest.html").body
         html_doc = Nokogiri::HTML(body)
         fix_data_missing(body)
-        %Q(#{html_doc.at_css('h1:first').text}\n#{body})
+        h1 = html_doc.at_css('h1:first')
+        header = h1 ? h1.text + "\n" : ''
+        begin
+          header + body
+        rescue
+          body
+        end
       end
 
       def create(body)

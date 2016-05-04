@@ -13,6 +13,7 @@ Here is the data that will lose as I know
 - Header 1 in the pad (fixed by change ellement h2 to hackpad style)
 - All link tag in the pad
 - All users info of comments in the pad
+- All images in the pad
 
 ## Installation
 

@@ -18,12 +18,16 @@ Here is the data that will lose as I know
 
     $ gem install hackpad-migration
 
+## Config
+
+    Please copy db.json.sample to db.json and edit it before migreate.
+
 ## Usage
 
     hackpad-migrate migrate
 
     Options:
-    [--output=OUTPUT]  # file path for the result, default is result.json in current path.
+    [--db=db_file]  # file path for the result, default is db.json in current path.
 
     Do migration with the config in the result, it will create a new config when you execute it at first time.
 

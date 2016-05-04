@@ -5,8 +5,20 @@ module Hackpad
         @out_file = out_file
       end
 
-      def result
-        @result ||= File.exist?(@out_file) ? JSON.parse(open(@out_file).read) : {}
+      def each_source
+        _db['sources'].each do |s|
+          @current_source = s
+          yield API.new(s['site'], s['client_id'], s['secret'])
+        end
+      end
+
+      def target
+        t = _db['target']
+        @target ||= API.new(t['site'], t['client_id'], t['secret'])
+      end
+
+      def _db
+        @db ||= File.exist?(@out_file) ? JSON.parse(open(@out_file).read) : {}
       end
 
       def write!
@@ -15,28 +27,17 @@ module Hackpad
         end
       end
 
-      def user_options
-        @user_options ||= result['user_options'] || {}
-      end
-
       def source_and_target_map
-        @source_and_target_map ||= result['source_and_target_map'] || {}
-      end
-
-      def add_user_option(key, vlaue)
-        user_options[key] = value
+        @current_source['source_and_target_map'] ||= {}
       end
 
       def add_source_and_target(source, target)
+        @current_source['updated_at'] = Time.now
         source_and_target_map[source] = target
       end
 
       def to_json
-        JSON.pretty_generate(
-          user_options: user_options,
-          source_and_target_map: source_and_target_map,
-          updated_at: Time.now
-        )
+        JSON.pretty_generate(_db)
       end
     end
   end

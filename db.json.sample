@@ -1,0 +1,20 @@
+{
+  "target": {
+    "site": "https://teamname.target.com",
+    "client_id": "xxx",
+    "secret": "xxxxxx"
+  },
+  "sources":
+  [
+    {
+      "site": "https://teamname1.hackpad.com",
+      "client_id": "xxx",
+      "secret": "xxxxxx"
+    },
+    {
+      "site": "https://teamname2.hackpad.com",
+      "client_id": "xxx",
+      "secret": "xxxxxx"
+    }
+  ]
+}

@@ -7,5 +7,5 @@
 /pkg/
 /spec/reports/
 /tmp/
-/result.json
+/db.json
 /hackpad-migration-*.gem

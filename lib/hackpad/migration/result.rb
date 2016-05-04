@@ -2,6 +2,10 @@ module Hackpad
   module Migration
     class Result
       def initialize(out_file)
+        unless File.exist?(out_file)
+          STDERR.puts "ERROR: db file #{out_file} not found!"
+          exit(-1)
+        end
         @out_file = out_file
       end
 

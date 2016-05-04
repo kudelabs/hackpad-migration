@@ -16,6 +16,18 @@ module Hackpad
           puts e
         end
       end
+
+      desc 'make_index', 'Create index for the pads that migrated'
+      method_option :db, desc: 'file path for the result, default is db.json in current path.'
+      def make_index
+        out_file = options['db'].nil? ? 'db.json' : options['db']
+        last_result = Result.new(out_file)
+        begin
+          Hackpad::Migration::Indexer.new(last_result).create
+        rescue Errno::ECONNREFUSED => e
+          puts e
+        end
+      end
     end
   end
 end

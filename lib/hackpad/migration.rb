@@ -7,6 +7,7 @@ require 'hackpad/migration/result'
 require 'hackpad/migration/runner'
 require 'hackpad/migration/api'
 require 'hackpad/migration/migrator'
+require 'hackpad/migration/indexer'
 
 module Hackpad
   module Migration

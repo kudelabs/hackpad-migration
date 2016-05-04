@@ -12,6 +12,14 @@ module Hackpad
         end
       end
 
+      def index_pad
+        _db['index_pad']
+      end
+
+      def index_pad=(pid)
+        _db['index_pad'] = pid
+      end
+
       def target
         t = _db['target']
         @target ||= API.new(t['site'], t['client_id'], t['secret'])

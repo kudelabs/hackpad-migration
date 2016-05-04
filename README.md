@@ -24,7 +24,7 @@ Here is the data that will lose as I know
 
 ## Usage
 
-    hackpad-migrate migrate
+### hackpad-migrate migrate
 
     Options:
     [--db=db_file]  # file path for the result, default is db.json in current path.
@@ -33,6 +33,14 @@ Here is the data that will lose as I know
 
 
 The migration can execute multiple times as you want, it will store the result in the disk after the migrateion is done for each pad, So the next time to be executed, this tool will update all the pad from source site.
+
+
+### hackpad-migrate make_index
+
+    Options:
+    [--db=DB]  # file path for the result, default is db.json in current path.
+
+    Create index for the pads that migrated
 
 ## Contributing
 

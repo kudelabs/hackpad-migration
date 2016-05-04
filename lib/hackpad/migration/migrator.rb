@@ -40,12 +40,16 @@ module Hackpad
         html_doc = Nokogiri::HTML(body)
         fix_data_missing(body)
         h1 = html_doc.at_css('h1:first')
-        head_text = h1.text
-        # override origin head
-        origin_link = "<div>NOTE: This pad is migrated from #{source.client.uri}, <a href=\"#{source.client.uri}/#{pid}\">here is original pad</a></div>"
-        h1.inner_html = origin_link
+        head_text = ''
+        if h1
+          head_text = h1.text
+          # override origin head
+          origin_link = "<div>NOTE: This pad is migrated from #{source.client.uri}, <a href=\"#{source.client.uri}/#{pid}\">here is original pad</a></div>"
+          h1.inner_html = origin_link
+        end
+        body = html_doc.at_css('body')
         begin
-          [head_text, html_doc.at_css('body').inner_html].join("\n")
+          [head_text, body ? body.inner_html : ''].join("\n")
         rescue Exception => e
           puts "Got error with pid #{pid}: " + e.message
           body

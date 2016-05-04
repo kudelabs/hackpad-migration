@@ -13,7 +13,7 @@ module Hackpad
             body = source.get(source_pid)
             html_doc = Nokogiri::HTML(body)
             h1 = html_doc.at_css('h1:first')
-            pads << "<a href=\"#{source.client.uri}/#{source_pid}\">Original</a> | <a href=\"#{db.target.client.uri}/#{target_pid}\">Here</a> => #{h1.text}"
+            pads << "<a href=\"#{source.client.uri}/#{source_pid}\">Original</a> | <a href=\"#{db.target.client.uri}/#{target_pid}\">Here</a> => #{h1 && h1.text}"
             STDOUT.write('.')
           end
         end
